@@ -79,7 +79,7 @@ exports.deleteLink = async  function(req, res){
         let foods;
         foods = await mongoose.model('Link').deleteOne({ _id: req.params.id })
 
-        res.json(foods)
+        res.status(200).send({ msg: "Deleteado com sucesso", code: "2" })
 
     } catch (error) {
         res.status(500).json(error.toString())

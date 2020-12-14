@@ -30,7 +30,7 @@ exports.createAccount = function (req, res) {
         results = mongoose.model('User').find({ email: user.email }, function name(error, users) {
 
             if (users.length) {
-                res.status(200).send({ msg: "an account already exists with this registered email address" })
+                res.status(200).send({ msg: "Já existe uma conta cadastrada com esse email", code: "1" })
             } else {
                 newUser = new mongoose.model('User')(user)
 
@@ -49,7 +49,7 @@ exports.createAccount = function (req, res) {
                             expiresIn: 7200
                         })
 
-                        res.status(200).send({ msg: "Account Created", dataUser })
+                        res.status(200).send({ msg: "Conta Criada com sucesso!", code: "2" })
                     }
 
 
@@ -60,7 +60,8 @@ exports.createAccount = function (req, res) {
         })
     } catch (error) {
         res.status(500).send({
-            msg: "error when create user"
+            msg: "error when create user",
+            code: "3"
         })
     }
 

@@ -39,34 +39,14 @@ exports.createCategory = function(req, res){
     }
 }
 
-// exports.updateLink = function(req, res){
-//     try {
+exports.deleteCategory = async  function(req, res){
+    try {
+        let foods;
+        foods = await mongoose.model('Category').deleteOne({ _id: req.params.id })
 
-//         let user = authController.authUser(req)
-
-//         let link = req.body
-
-//         let results = mongoose.models.Link.findOneAndUpdate({ _id: req.params.id, idUser: user.userId },
-//             link,
-//             function (error, links) {
-//                 if (error)
-//                     res.send(error)
-
-//                 res.json({ msg: "update success" })
-//             })
-//     } catch (error) {
-//         res.json({ msg: "error when update link" })
-//     }
-// }
-
-// exports.deleteLink = async  function(req, res){
-//     try {
-//         let foods;
-//         foods = await mongoose.model('Link').deleteOne({ _id: req.params.id })
-
-//         res.json(foods)
-
-//     } catch (error) {
-//         res.status(500).json(error.toString())
-//     }
-// }
+        res.status(200).send({ msg: "Deleteado com sucesso", code: "2" })
+        
+    } catch (error) {
+        res.status(500).json(error.toString())
+    }
+}

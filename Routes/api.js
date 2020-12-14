@@ -26,6 +26,7 @@ Route.delete('/link/:id', AuthMiddleware.session, LinksController.deleteLink)
 
 Route.get('/category', AuthMiddleware.session, CategorysController.getCategorys)
 Route.post('/category', AuthMiddleware.session, CategorysController.createCategory)
+Route.delete('/category/:id', AuthMiddleware.session, CategorysController.deleteCategory)
 
 
 module.exports = Route
