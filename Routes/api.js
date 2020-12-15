@@ -18,6 +18,7 @@ Route.post('/login',  AuthController.login);
 Route.post('/createaccount',  AuthController.createAccount);
 
 Route.get('/links', AuthMiddleware.session, LinksController.getAllLinks)
+Route.get('/onelink/:id', AuthMiddleware.session, LinksController.getOneLink);
 Route.get('/links/:id', AuthMiddleware.session, LinksController.getLinksPerCategory)
 Route.post('/link', AuthMiddleware.session, LinksController.createLink)
 Route.put('/link/:id', AuthMiddleware.session, LinksController.updateLink)

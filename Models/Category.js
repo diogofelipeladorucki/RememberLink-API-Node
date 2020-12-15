@@ -10,6 +10,11 @@ var CategorySchema = new Schema({
         type: String,
         default: "#000000"
     },
+    titleCategory:{
+        type: String,
+        default: "Sem titulo",
+        required: "insert titleCategory"
+    },
     descriptionCategory:{
         type: String,
         required: "insert descriptionCategory"

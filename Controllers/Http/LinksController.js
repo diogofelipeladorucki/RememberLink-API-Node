@@ -18,6 +18,21 @@ exports.getAllLinks = async function(req, res){
     }
 }
 
+exports.getOneLink = async function(req, res){
+    try {
+
+        var user = authController.authUser(req)
+
+        let foods;
+        foods = await mongoose.model('Link').findOne({ idUser: user.userId, _id: req.params.id }, null, { sort: { '_id': -1 }}).populate('category');
+
+        res.json(foods)
+
+    } catch (error) {
+        res.status(500).json(error.toString())
+    }
+}
+
 exports.getLinksPerCategory = async function(req, res){
     try {
 
@@ -67,7 +82,7 @@ exports.updateLink = function(req, res){
                 if (error)
                     res.send(error)
 
-                res.json({ msg: "update success" })
+                    res.status(200).send({ msg: "Deleteado com sucesso", code: "2" })
             })
     } catch (error) {
         res.json({ msg: "error when update link" })
